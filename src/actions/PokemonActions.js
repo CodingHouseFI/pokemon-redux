@@ -20,3 +20,19 @@ export function fetchPokemon() {
   }
 }
 
+export function createPokemon(pokemon) {
+  return dispatch => {
+    axios.post('/api/pokemon', pokemon)
+      .then(() => {
+        dispatch(fetchPokemon())
+      })
+      .catch(console.error)
+  }
+}
+
+export function changeSort(value) {
+  return {
+    type: 'CHANGE_SORT',
+    payload: { value }
+  }
+}
